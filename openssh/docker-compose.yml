@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+
+  conquest:
+    image: zhonger/ubuntu:ssh
+    container_name: dev3
+    environment:
+     - GITHUB_NAME=zhonger
+    stdin_open: true
+    tty: true
+    volumes:
+     - ~/web/test:/home/ubuntu/test
+    restart: always
