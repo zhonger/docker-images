@@ -23,6 +23,11 @@ RUN sudo apt install -y git zsh \
     && sed -i "s/robbyrussell/bira/" ~/.zshrc \
     && sudo usermod -s /bin/zsh ubuntu
 
+# Fix zsh locale
+RUN sudo apt install -y locales \
+    && sudo locale-gen en_US.UTF-8 \
+    && sed -i "3a\export LANG=en_US.utf8" ~/.zshrc \
+    && exec zsh
 
 # Clean apt-cache
 RUN sudo apt autoremove -y \

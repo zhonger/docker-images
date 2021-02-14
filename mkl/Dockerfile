@@ -23,6 +23,14 @@ RUN sudo apt install -y git zsh \
     && sed -i "s/robbyrussell/bira/" ~/.zshrc \
     && sudo usermod -s /bin/zsh ubuntu
 
+ADD setvars.sh /home/ubuntu/.mkl/setvars.sh
+# Fix zsh locale
+RUN sudo apt install -y locales \
+    && sudo locale-gen en_US.UTF-8 \
+    && sudo chown -R ubuntu:ubuntu ~/.mkl \
+    && sed -i "3a\export LANG=en_US.utf8" ~/.zshrc \
+    && sed -i "6a\source ~/.mkl/setvars.sh" ~/.zshrc \
+    && exec zsh
 
 # Clean apt-cache
 RUN sudo apt autoremove -y \

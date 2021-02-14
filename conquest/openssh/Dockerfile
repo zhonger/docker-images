@@ -12,6 +12,7 @@ RUN sudo apt autoremove -y \
     && sudo apt clean -y \
     && sudo rm -rf /var/lib/apt/lists/*
 
+ADD cid.sh /usr/bin/cid.sh
 ADD entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
