@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  controller:
+    image: zhonger/conquest:slurm-ssh
+    container_name: workq
+    stdin_open: true
+    tty: true
+    volumes: 
+      - /work/data1/lisz/slurm/slurm.conf:/etc/slurm-llnl/slurm.conf
+      - /work/data1/lisz/slurm/hosts:/etc/hosts
+    ports:
+      - 6817:6817
+      - 6818:6818
+    restart: always
+    hostname: workq

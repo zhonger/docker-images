@@ -14,9 +14,8 @@ RUN sudo apt update \
 
 COPY slurm.conf /etc/slurm-llnl/slurm.conf
 
-RUN sudo service munge restart \
-    && sudo service slurmd restart \
-    && sudo service slurmctld restart
+# Install common softwares
+RUN sudo apt install -y vim iputils-ping net-tools htop
 
 # Clean apt-cache
 RUN sudo apt autoremove -y \
